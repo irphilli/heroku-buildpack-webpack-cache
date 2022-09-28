@@ -12,4 +12,8 @@ mkdir -p ${BUILD_DIR}/node_modules/.cache
 mkdir -p ${CACHE_DIR}/webpack
 ln -fs ${CACHE_DIR}/webpack ${BUILD_DIR}/node_modules/.cache
 
+# Debug
+ls -l ${BUILD_DIR}/node_modules/.cache
+ls -l ${BUILD_DIR}/node_modules/.cache/webpack
+
 echo "-----> webpack-cache done"
