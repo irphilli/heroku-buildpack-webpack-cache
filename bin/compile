@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# bin/compile <build-dir> <cache-dir> <env-dir>
+
+# Parameters
+BUILD_DIR=$1
+CACHE_DIR=$2
+
+# Fail fast
+set -e
+
+mkdir -p ${BUILD_DIR}/node_modules/.cache
+mkdir -p ${CACHE_DIR}/webpack
+ln -fs ${CACHE_DIR}/webpack ${BUILD_DIR}/node_modules/.cache
+
+echo "-----> webpack-cache done"
