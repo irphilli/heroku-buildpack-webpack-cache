@@ -9,11 +9,16 @@ CACHE_DIR=$2
 set -e
 
 mkdir -p ${BUILD_DIR}/node_modules/.cache
-mkdir -p ${CACHE_DIR}/webpack
-ln -fs ${CACHE_DIR}/webpack ${BUILD_DIR}/node_modules/.cache
+
+if [ -e "${CACHE_DIR}/webpack" ]; then
+  echo "- webpack cache exists, moving"
+  rm -rf ${BUILD_DIR}/node_modules/.cache/webpack
+  mv ${CACHE_DIR}/webpack ${BUILD_DIR}/node_modules/.cache
+else
+  echo "- webpack cache does not exist"
+fi
 
 # Debug
-ls -l ${BUILD_DIR}/node_modules/.cache
-ls -l ${BUILD_DIR}/node_modules/.cache/webpack/
+find ${BUILD_DIR}/node_modules/.cache/webpack
 
 echo "-----> webpack-cache done"
